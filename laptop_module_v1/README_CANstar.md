@@ -2,15 +2,15 @@
 
 **Thalamus** | CANstar_IRC26_Rev1
 
-A CAN bus distribution board built around a Blue Pill (STM32F103). The idea is simple — one MCU, one CAN transceiver, and 8 CAN ports fanned out so multiple nodes on a robot can all plug into a central hub. Designed for IRC26 (Indian Rover Challenge), boards came back from fab via Blue Dart.
+A CAN bus distribution board built around a Blue Pill (STM32F103). The idea is simple — one MCU, one CAN transceiver, and 8 CAN ports fanned out so multiple nodes on the rover can all plug into a central hub. Designed for IRC26 , boards came back from fab done by lion circuits.
 
 ---
 
 ## What it does
 
-Most robots running CAN end up needing a central point where all the CAN nodes connect. Instead of daisy-chaining connectors or hand-wiring a bus, this board gives you 8 keyed XH connectors all on the same CAN_H/CAN_L bus, with power (5V) on every port so nodes can draw power and comms from a single cable.
+It is the centralised node from where all data from all other nodes get passed on to the rovers on board laptop for further applications. Instead of daisy chaining connectors or hand wiring a bus, this board gives 8 keyed JST connectors all on the same CAN_H/CAN_L bus, with power (5V) on every port so nodes can draw power and comms from a single connector.
 
-The Blue Pill plugs in via through-hole headers — no soldering the MCU directly, so it's swappable.
+The Blue Pill plugs in via through-hole headers making it easy to replace and a sort of plug and play system.
 
 ---
 
@@ -25,7 +25,7 @@ The Blue Pill plugs in via through-hole headers — no soldering the MCU directl
 | AMS1117 | 5V → 3.3V LDO for MCU supply |
 | SSA34HE3_A/I | Schottky diode on output rail |
 | 150080GS75000 | Power indicator LED (D1) |
-| Rbypass1 | 0Ω bypass resistor — jumper to route 5V directly if eFuse is not populated |
+| Rbypass1 | 0Ω bypass resistor — jumper to route 5V directly if eFuse is not connected |
 | B4B-XH-AM (×8) | CAN ports J_CAN_I/P1 through J_CAN_I/P8, each with 5V, GND, CAN_P, CAN_N |
 | B4B-XH-AM (×1) | J_FTDI1 — UART header for Blue Pill programming/debug |
 
@@ -72,8 +72,6 @@ Every CAN port also gets 5V directly from the protected rail — so plugged-in n
 - eFuse + LDO circuitry on the lower-left
 - FTDI header bottom-left
 
-Board silkscreen has the **Thalamus** team logo and board name — nice touch for a competition build.
-
 ---
 
 ## Pinout (Blue Pill signals used)
@@ -83,15 +81,6 @@ Board silkscreen has the **Thalamus** team logo and board name — nice touch fo
 | PA9 / PA10 | UART1_TX / UART1_RX |
 | PB8 / PB9 | MCU_CAN_RX / MCU_CAN_TX (bxCAN) |
 | PA0–PA15, PB0–PB15 | Routed through ZC323000 I/O expander to connectors |
-
----
-
-## Firmware
-
-- Flash via UART (J_FTDI1 + BOOT0 on Blue Pill) or SWD
-- Toolchain: STM32CubeIDE or PlatformIO (Blue Pill is well supported)
-- CAN: STM32 HAL bxCAN driver, configure for your network bitrate (typically 500kbps or 1Mbps for robotics)
-- The board acts as a CAN hub — firmware can optionally implement message filtering, forwarding, or logging over UART
 
 ---
 
@@ -106,4 +95,4 @@ Board silkscreen has the **Thalamus** team logo and board name — nice touch fo
 
 ---
 
-*Thalamus Robotics Team — IRC26 | 2nd year ECE, VIT Vellore — Altium Designer*
+*Team Vyadh — IRC26 | 2nd year ECE, VIT Vellore — Altium Designer*
