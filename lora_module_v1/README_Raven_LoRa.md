@@ -1,8 +1,8 @@
 # Raven — LoRa_IRC26_Rev1
 
-**Thalamus** | LoRa_IRC26_Rev1
+**Team Vyadh** | LoRa_IRC26_Rev1
 
-A Blue Pill carrier board that combines LoRa (RA-02/SX1278) with CAN bus passthrough and protected 5V regulation. Built for IRC26 (Indian Rover Challenge) — the idea being a wireless telemetry node that also sits on the rover's CAN network. Boards came back from fab via Blue Dart, Jan 2026.
+A Blue Pill carrier board that combines LoRa (RA-02/SX1278) with CAN bus passthrough and protected 5V regulation. Built for IRC26 , the idea being a wireless telemetry node that also sits on the rover's CAN network. Boards came back from fab via done by lion circuits
 
 ---
 
@@ -48,7 +48,6 @@ CAN passthrough ports (input + output) mean this board can sit inline on a CAN c
 - Connected to Blue Pill via **SPI1**: SPI1_SCK, SPI1_MOSI, SPI1_MISO, NSS
 - Additional pins: RST, DIO0–DIO5 (interrupt lines for TX done, RX done, etc.)
 - Operates at 3.3V — powered from LDO output directly
-- No onboard antenna connector shown in schematic — RA-02 module has its own U.FL/wire antenna pad
 
 ---
 
@@ -96,13 +95,6 @@ CAN passthrough ports (input + output) mean this board can sit inline on a CAN c
 
 ---
 
-## Firmware
-
-- Flash via UART (J_FTDI) or SWD on Blue Pill pins
-- Toolchain: STM32CubeIDE or PlatformIO
-- LoRa: [RadioLib](https://github.com/jgromes/RadioLib) has SX1278 support, port to STM32 HAL SPI
-- CAN: STM32 HAL bxCAN driver
-
 Typical use case: poll CAN bus, package frames into a LoRa payload, transmit to a base station. Or receive LoRa commands and put them onto the CAN network.
 
 ---
@@ -117,4 +109,4 @@ Typical use case: poll CAN bus, package frames into a LoRa payload, transmit to 
 
 ---
 
-*Thalamus Robotics Team — IRC26 | 2nd year ECE, VIT Vellore — Altium Designer*
+*Team Vyadh — IRC26 | 2nd year ECE, VIT Vellore — Altium Designer*
